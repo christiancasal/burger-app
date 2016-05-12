@@ -1,4 +1,4 @@
-var orm = require('./config/orm.js');
+var orm = require('../config/orm.js');
 
 var burger_call = {
   insert: function(some_val, cb){
@@ -7,7 +7,7 @@ var burger_call = {
     });
   },
   read: function(cb){
-    orm.read('*', function(res){
+    orm.read('*', 'burger_tbl', function(res){
       cb(res);
     });
   },
