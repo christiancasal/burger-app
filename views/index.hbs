@@ -1,1 +1,36 @@
-<h1>hello</h1>
+<h2>Add a burger!</h2>
+
+
+<form class="form-control" action="/burger/add" method="POST">
+  <div class="form-group">
+      <label for="burger">Enter your burger!</label>
+      <input type="text" id="burger" name="user_burger" required>
+  </div>
+</form>
+
+
+<h2>Your burgers!</h2>
+
+<ul>
+  {{#each burger}}
+    {{#unless this.devoured}}
+      <li>{{this.burger_name}}
+
+        <form class="form-control" action="/burger/update/{{this.id}}?_method=PUT" method="POST">
+          <button type="submit">EAT!</button>
+        </form>
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>You ate!</h2>
+  {{#each burger}}
+    {{#if this.devoured}}
+      <li>{{this.burger_name}}!
+        <form class="form-control" action="/burger/delete/{{this.id}}?_method=PUT" method="POST">
+          <button type="submit">BURP!</button>
+        </form>
+      </li>
+    {{/if}}
+  {{/each}}

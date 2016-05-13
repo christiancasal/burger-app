@@ -7,17 +7,17 @@ var burger_call = {
     });
   },
   read: function(cb){
-    orm.read('*', 'burger_tbl', function(res){
+    orm.read('burgers_tbl', function(res){
       cb(res);
     });
   },
-  update: function(devoured_bool, user_burger, cb){
-    orm.update('burger_tbl', 'devoured', devoured_bool, 'burger_name', user_burger, function(res){
+  update: function(user_id, cb){
+    orm.update('burgers_tbl', 'devoured', 1 , 'id', user_id, function(res){
       cb(res);
     });
   },
-  delete: function(user_burger, cb){
-    orm.delete('burger_tbl', 'burger_name', user_burger, function(res){
+  delete: function(user_id, cb){
+    orm.delete('burgers_tbl', 'id', user_id, function(res){
       cb(res);
     });
   }
